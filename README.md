@@ -13,12 +13,12 @@ This project provides a Python-based tool for retrieving and processing content 
 - Modular structure for easy customization and extension.
 
 ## Requirements
-- Python 3.8 or higher
+- Python 3.9 or higher
 
 ## Installation
 ### 1. Clone the Repository:
 ```bash
-git https://github.com/matthieumontaigu/feed-notifier.git
+git clone https://github.com/matthieumontaigu/feed-notifier.git
 cd feed-notifier
 ```
 
