@@ -1,4 +1,5 @@
 from aws.sender_factory import get_sender
+from schema.item import Item
 
 
 class MessageSender(object):
@@ -14,11 +15,19 @@ class MessageSender(object):
         self.sources = sources
         self.destination = destination
 
-    def send_items(self, items: list[dict[str, str]]) -> None:
+    def send_message(self, subject: str, message: str) -> None:
+        self.sender.send(
+            source=self.get_default_source(),
+            destination=self.destination,
+            subject=subject,
+            message=message,
+        )
+
+    def send_items(self, items: list[Item]) -> None:
         for item in items:
             self.send_item(item)
 
-    def send_item(self, item: dict[str, str]) -> None:
+    def send_item(self, item: Item) -> None:
         source = self.sources[item["type"]]
         self.sender.send(
             source=source,
@@ -27,10 +36,16 @@ class MessageSender(object):
             message=self.get_message(item),
         )
 
-    @staticmethod
-    def get_subject(item):
-        return item["subject"]
+    def get_default_source(self):
+        return self.sources[next(iter(self.sources))]
 
     @staticmethod
-    def get_message(item):
-        return item["message"]
+    def get_subject(item: Item) -> str:
+        return item["title"]
+
+    @staticmethod
+    def get_message(item: Item) -> str:
+        message = f"{item['title']}\n{item['link']}"
+        if item["content"]:
+            message += f"\n{item['content']}"
+        return message
