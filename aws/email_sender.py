@@ -25,10 +25,10 @@ class AWSEmailSender(BaseSender):
         mail_message["To"] = destination
         mail_message["Subject"] = subject
 
-        body_text = message
-        body_html = message
-        textpart = MIMEText(body_text.encode("utf-8"), "plain", "utf-8")
-        htmlpart = MIMEText(body_html.encode("utf-8"), "html", "utf-8")
+        plain_text_message = message
+        html_message = message.replace("\n", "<br>")
+        textpart = MIMEText(plain_text_message, "plain", "utf-8")
+        htmlpart = MIMEText(html_message, "html", "utf-8")
 
         mail_body = MIMEMultipart("alternative")
         mail_body.attach(textpart)
