@@ -40,8 +40,8 @@ Create a `config.json` file containing all the parameters. Below is an example.
     "feeds": [
         {
             "feed_type": "rss",
-            "feed_url": "https://rss.com",
-            "items_type": "letters",
+            "feed_url": "https://news.rss.com",
+            "items_type": "news",
             "update_interval": 300,
             "filters": [
                 "[a-z]+"
@@ -49,8 +49,8 @@ Create a `config.json` file containing all the parameters. Below is an example.
         },
         {
             "feed_type": "html",
-            "feed_url": "https://html.com",
-            "items_type": "numbers",
+            "feed_url": "https://recipes.html.com",
+            "items_type": "recipes",
             "update_interval": 21600,
             "filters": [
                 "\\d+"
@@ -65,8 +65,8 @@ Create a `config.json` file containing all the parameters. Below is an example.
             "aws_secret_access_key": ""
         },
         "sources": {
-            "letters": "Letters <letters.email@example.com>",
-            "numbers": "Numbers <numbers.email@example.com>",
+            "news": "News <news.email@example.com>",
+            "recipes": "Recipes <recipes.email@example.com>",
         },
         "destination": "your.email@example.com"
     },
