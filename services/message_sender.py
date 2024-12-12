@@ -45,7 +45,7 @@ class MessageSender(object):
 
     @staticmethod
     def get_message(item: Item) -> str:
-        message = f"{item['title']}\n{item['link']}"
+        message = f"{item['link']}"
         if item["content"]:
-            message += f"\n{item['content']}"
+            message += f"\n\n{item['content']}"
         return message
